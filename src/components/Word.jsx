@@ -1,7 +1,20 @@
-import React from 'react';
+function Word({selectedWord, correctLetters}) {
 
-function Word() {
+    if (!selectedWord || typeof selectedWord !== 'string') {
+    return <p>Error: Word not loaded</p>; 
+  }
+console.log("Word props:", { selectedWord, correctLetters });
+
     return (
-        <div class="word" id="word"></div>
+        <div className="word" >
+            {selectedWord.split('').map( (letter, i) => (
+                
+                    <span className="letter" key={i}>
+                        {correctLetters.includes(letter) ? letter : ''}
+                    </span>
+            ))}
+        </div>
     );
 }
+
+export default Word;
