@@ -3,34 +3,53 @@
 }
 
 body {
-  background-color: #34495e;
-  color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #e9f5f9;
+  color: #2e3a59;
+  font-family: 'Segoe UI', 'Inter', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 80vh;
+  justify-content: flex-start;
+  min-height: 100vh;
   margin: 0;
-  overflow: hidden;
+  padding: 40px 0;
 }
 
 h1 {
-  margin: 20px 0 0;
+  margin: 0 0 30px;
+  font-size: 2.8rem;
+  font-weight: 600;
+  color: #1d3557;
+  text-align: center;
+}
+
+p {
+  margin: 0 0 30px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #457b9d;
+  text-align: center;
 }
 
 .game-container {
-  padding: 20px 30px;
+  background-color: #ffffff;
+  padding: 30px 40px 60px;
+  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
   position: relative;
-  margin: auto;
-  height: 350px;
-  width: 450px;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .figure-container {
-  fill: transparent;
-  stroke: #fff;
+  fill: none;
+  stroke: #457b9d;
   stroke-width: 4px;
   stroke-linecap: round;
+  width: 100%;
 }
 
 .figure-part {
@@ -38,93 +57,118 @@ h1 {
 }
 
 .wrong-letters-container {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  text-align: right;
+  margin-top: 30px;
+  width: 100%;
+  text-align: center;
+  color: #e63946;
+  font-weight: 500;
 }
 
 .wrong-letters-container p {
-  margin: 0 0 5px;
+  margin: 0 0 6px;
+  font-size: 14px;
 }
 
 .wrong-letters-container span {
-  font-size: 24px;
+  font-size: 22px;
 }
 
 .word {
   display: flex;
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+  flex-wrap: wrap;
 }
 
 .letter {
-  border-bottom: 3px solid #2980b9;
+  border-bottom: 2px solid #48cae4;
   display: inline-flex;
-  font-size: 30px;
+  font-size: 32px;
+  font-weight: 500;
   align-items: center;
   justify-content: center;
-  margin: 0 3px;
   height: 50px;
-  width: 20px;
+  width: 30px;
+  transition: all 0.2s ease;
 }
 
-.popup-container {
-  background-color: rgba(0, 0, 0, 0.3);
+.alert-container {
+  background-color: rgba(0, 0, 0, 0.2);
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  /* display: flex; */
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 999;
 }
 
-.popup {
-  background: #2980b9;
-  border-radius: 5px;
-  box-shadow: 0 15px 10px 3px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+.alert {
+  background-color: #009297;
+  border-radius: 12px;
+  padding: 40px 50px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.alert h2,
+.alert h3 {
+  margin: 10px 0;
+  color: #1d3557;
   text-align: center;
 }
 
-.popup button {
-  cursor: pointer;
-  background-color: #fff;
-  color: #2980b9;
-  border: 0;
+.alert button {
   margin-top: 20px;
-  padding: 12px 20px;
+  padding: 12px 26px;
+  background-color: #1d3557;
+  color: #f1f5f9;
+  border: none;
+  border-radius: 8px;
   font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.popup button:active {
+.alert button:hover {
+  background-color: #457b9d;
+}
+
+.alert button:active {
   transform: scale(0.98);
 }
 
-.popup button:focus {
-  outline: 0;
-}
-
-.notification-container {
-  background-color: rgba(0, 0, 0, 0.3);
+.message-container {
+  background-color: #edf6f9;
+  color: #1d3557;
   border-radius: 10px 10px 0 0;
-  padding: 15px 20px;
+  padding: 16px 24px;
   position: absolute;
-  bottom: -50px;
-  transition: transform 0.3s ease-in-out;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: transform 0.4s ease-in-out;
+  font-size: 16px;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.notification-container p {
+.message-container p {
   margin: 0;
+  text-align: center;
+  font-weight: 500;
 }
 
-.notification-container.show {
-  transform: translateY(-50px);
+.message-container.show {
+  transform: translate(-50%, -60px);
 }
+
