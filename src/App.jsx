@@ -104,6 +104,26 @@ const playAgain = () => {
         inputMode="text"
         className="absolute opacity-0 pointer-events-none"
         onChange={() => {}}
+        onInput={(e) => {
+    const inputValue = e.target.value.toLowerCase().slice(-1); // last typed letter
+    if (!/^[a-z]$/.test(inputValue)) return;
+
+    if (playable && selectedWord.includes(inputValue)) {
+      if (!correctLetters.includes(inputValue)) {
+        setCorrectLetters((curr) => [...curr, inputValue]);
+      } else {
+        show(setShowNotification);
+      }
+    } else {
+      if (!wrongLetters.includes(inputValue)) {
+        setWrongLetters((curr) => [...curr, inputValue]);
+      } else {
+        show(setShowNotification);
+      }
+    }
+
+    e.target.value = ""; 
+  }}
         autoFocus
       />
 
