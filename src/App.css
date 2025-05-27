@@ -42,7 +42,7 @@ body {
 }
 
 .alert {
-  background-color: #009297;
+  background-color: rgb(1, 1, 110);
   border-radius: 12px;
   padding: 40px 50px;
   text-align: center;
@@ -58,15 +58,15 @@ body {
 .alert h2,
 .alert h3 {
   margin: 10px 0;
-  color: #1d3557;
+  color: #f3f7fe;
   text-align: center;
 }
 
 .alert button {
   margin-top: 20px;
   padding: 12px 26px;
-  background-color: #1d3557;
-  color: #f1f5f9;
+  background-color: #e9f5f9;
+  color: #01057b;
   border: none;
   border-radius: 8px;
   font-size: 16px;
@@ -76,7 +76,7 @@ body {
 }
 
 .alert button:hover {
-  background-color: #457b9d;
+  background-color: #cee9f9;
 }
 
 .alert button:active {
