@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './App.css'
 import Header from './components/Header';
 import Figure from './components/Figure';
@@ -21,12 +21,19 @@ function App() {
   const [correctLetters, setCorrectLetters] = useState([]);
   const [wrongLetters, setWrongLetters] = useState([]);
   const [showNotification, setShowNotification] = useState(false);
+  const inputRef = useRef(null);
 
 
   useState(() => {
     const random = words[Math.floor(Math.random() * words.length)];
     setSelectedWord(random);
   }, []);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [playable]);
 
 useEffect(() => {
   const handleKeydown = event => {
@@ -57,6 +64,22 @@ useEffect(() => {
   return () => window.removeEventListener('keydown', handleKeydown);
 },[correctLetters, wrongLetters, playable]);  
 
+const handleKeyInput = (letter) => {
+    if (selectedWord.includes(letter)) {
+      if (!correctLetters.includes(letter)) {
+        setCorrectLetters((prev) => [...prev, letter]);
+      } else {
+        show(setShowNotification);
+      }
+    } else {
+      if (!wrongLetters.includes(letter)) {
+        setWrongLetters((prev) => [...prev, letter]);
+      } else {
+        show(setShowNotification);
+      }
+    }
+  };
+
 
 const playAgain = () => {
   setPlayable(true);
@@ -65,6 +88,8 @@ const playAgain = () => {
 
   const random = words[Math.floor(Math.random() * words.length)];
   setSelectedWord(random);
+  if (inputRef.current) inputRef.current.focus();
+
 };
 
   return (
@@ -75,6 +100,22 @@ const playAgain = () => {
         <WrongLetter wrongLetter={wrongLetters} />
         <Word selectedWord={selectedWord} correctLetters={correctLetters} />
       </div>
+
+      <input
+        ref={inputRef}
+        type="text"
+        inputMode="text"
+        autoComplete="off"
+        autoFocus
+        className="absolute opacity-0 pointer-events-none"
+        onChange={(e) => {
+          const key = e.target.value.slice(-1).toLowerCase();
+          if (key >= 'a' && key <= 'z') {
+            handleKeyInput(key);
+          }
+          e.target.value = '';
+        }}
+      />
 
       <Message showNotification={showNotification} />
       <Alert correctLetters={correctLetters} wrongLetters={wrongLetters} selectedWord={selectedWord} setPlayable={setPlayable} playAgain={playAgain} />
