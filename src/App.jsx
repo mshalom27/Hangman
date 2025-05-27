@@ -60,7 +60,7 @@ useEffect(() => {
     <>
       <Header />
       <div className ="game-container">
-        <Figure />
+        <Figure wrongLetters={wrongLetters} />
         <WrongLetter wrongLetter={wrongLetters} />
         <Word selectedWord={selectedWord} correctLetters={correctLetters} />
       </div>
