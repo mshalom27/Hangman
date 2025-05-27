@@ -1,6 +1,5 @@
-* {
-  box-sizing: border-box;
-}
+@import "tailwindcss";
+
 
 body {
   background-color: #e9f5f9;
@@ -13,22 +12,6 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 40px 0;
-}
-
-h1 {
-  margin: 0 0 30px;
-  font-size: 2.8rem;
-  font-weight: 600;
-  color: #1d3557;
-  text-align: center;
-}
-
-p {
-  margin: 0 0 30px;
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: #457b9d;
-  text-align: center;
 }
 
 .game-container {
@@ -44,54 +27,6 @@ p {
   align-items: center;
 }
 
-.figure-container {
-  fill: none;
-  stroke: #457b9d;
-  stroke-width: 4px;
-  stroke-linecap: round;
-  width: 100%;
-}
-
-.figure-part {
-  display: none;
-}
-
-.wrong-letters-container {
-  margin-top: 30px;
-  width: 100%;
-  text-align: center;
-  color: #e63946;
-  font-weight: 500;
-}
-
-.wrong-letters-container p {
-  margin: 0 0 6px;
-  font-size: 14px;
-}
-
-.wrong-letters-container span {
-  font-size: 22px;
-}
-
-.word {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 30px;
-  flex-wrap: wrap;
-}
-
-.letter {
-  border-bottom: 2px solid #48cae4;
-  display: inline-flex;
-  font-size: 32px;
-  font-weight: 500;
-  align-items: center;
-  justify-content: center;
-  height: 50px;
-  width: 30px;
-  transition: all 0.2s ease;
-}
 
 .alert-container {
   background-color: rgba(0, 0, 0, 0.2);

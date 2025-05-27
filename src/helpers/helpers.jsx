@@ -20,15 +20,5 @@ function checkWin(correct, wrong, word) {
 
 }
 
-// function checkWin(correct, wrong, word) {
-//   if (wrong.length >= 6) return 'lose';
-
-//   const allLettersGuessed = word.split('').every(letter => correct.includes(letter));
-//   if (allLettersGuessed) return 'win';
-
-//   return '';
-// }
-
-
 export default show;
 export { checkWin };

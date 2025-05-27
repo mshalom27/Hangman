@@ -35,3 +35,5 @@ const Alert = ({ correctLetters, wrongLetters, selectedWord, setPlayable, playAg
 };
 
 export default Alert;
+
+
