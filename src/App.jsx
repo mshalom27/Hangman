@@ -24,7 +24,7 @@ function App() {
   const inputRef = useRef(null);
 
 
-  useState(() => {
+  useEffect(() => {
     const random = words[Math.floor(Math.random() * words.length)];
     setSelectedWord(random);
   }, []);
@@ -64,21 +64,18 @@ useEffect(() => {
   return () => window.removeEventListener('keydown', handleKeydown);
 },[correctLetters, wrongLetters, playable]);  
 
-const handleKeyInput = (letter) => {
-    if (selectedWord.includes(letter)) {
-      if (!correctLetters.includes(letter)) {
-        setCorrectLetters((prev) => [...prev, letter]);
-      } else {
-        show(setShowNotification);
-      }
-    } else {
-      if (!wrongLetters.includes(letter)) {
-        setWrongLetters((prev) => [...prev, letter]);
-      } else {
-        show(setShowNotification);
-      }
+useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
     }
-  };
+
+    const handleBlur = () => {
+      setTimeout(() => inputRef.current?.focus(), 100);
+    };
+
+    inputRef.current?.addEventListener("blur", handleBlur);
+    return () => inputRef.current?.removeEventListener("blur", handleBlur);
+  }, []);
 
 
 const playAgain = () => {
@@ -105,16 +102,9 @@ const playAgain = () => {
         ref={inputRef}
         type="text"
         inputMode="text"
-        autoComplete="off"
-        autoFocus
         className="absolute opacity-0 pointer-events-none"
-        onChange={(e) => {
-          const key = e.target.value.slice(-1).toLowerCase();
-          if (key >= 'a' && key <= 'z') {
-            handleKeyInput(key);
-          }
-          e.target.value = '';
-        }}
+        onChange={() => {}}
+        autoFocus
       />
 
       <Message showNotification={showNotification} />
