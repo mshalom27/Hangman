@@ -1,14 +1,37 @@
+import { checkWin } from '../helpers/helpers';
+import { useEffect } from 'react';
 
-const Alert = () => {
+const Alert = ({ correctLetters, wrongLetters, selectedWord, setPlayable, playAgain }) => {
+  let finalMessage = '';
+  let finalMessageRevealWord = '';
+  let playable = true;
+
+  const result = checkWin(correctLetters, wrongLetters, selectedWord);
+
+  if (result === 'win') {
+    finalMessage = 'Congratulations! You won!';
+    playable = false;
+  } else if (result === 'lose') {
+    finalMessage = 'You lost. Try Again!';
+    finalMessageRevealWord = `The word was: ${selectedWord}`;
+    playable = false;
+  }
+
+  useEffect(() => {
+    setPlayable(playable);
+  }, [playable, setPlayable]);
+
+  if (finalMessage === '') return null;
+
   return (
-    <div className="alert-container" id="alert-container">
+    <div className="alert-container">
       <div className="alert">
-        <h2 id="final-message"></h2>
-        <h3 id="final-message-reveal-word"></h3>
-        <button id="play-button">Play Again</button>
+        <h2>{finalMessage}</h2>
+        <h3>{finalMessageRevealWord}</h3>
+        <button onClick={playAgain}>Play Again</button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Alert
+export default Alert;

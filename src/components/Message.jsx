@@ -1,10 +1,12 @@
 
-const Message = () => {
+const Message = ({ showNotification }) => {
   return (
-    <div className="message-container" id="message-container">
-      <p>You have already entered this letter</p>
-    </div>
-  )
-}
+    showNotification && (
+      <div className="message-container">
+        <p>You have already entered this letter</p>
+      </div>
+    )
+  );
+};
 
 export default Message
