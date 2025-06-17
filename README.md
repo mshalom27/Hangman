@@ -56,7 +56,6 @@ npm install
 # Run the app
 npm run dev
 ```
-Open http://localhost:5173 to view it in your browser.
 
 ### 💡 Future Improvements
 ✅ Add difficulty levels
@@ -80,7 +79,6 @@ Open http://localhost:5173 to view it in your browser.
 
 ### 🧾 License
 This project is open-source under the MIT License.
-
 
 ---
 
